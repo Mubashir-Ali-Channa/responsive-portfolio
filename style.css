@@ -21,12 +21,14 @@ html{
 }
 
 
-.back-vid{
+.back-vid {
     position: fixed;
-    right: 0;
-    bottom: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     z-index: -1;
-    mix-blend-mode:overlay;
 }
 
 
@@ -139,10 +141,11 @@ header ul a:hover{
 
 .hero-info .hero-info-title{
     color: #72a1de;
-    padding: 8px 5px;
+    padding: 15px 30px;
     border-radius: 50px;
     border: 1px solid #72a1de94;
-    width: 240px;
+    width: max-content;
+    white-space: nowrap;
     background-color: #2200493d;
     box-shadow: 0 0 5px #72a1de84;
 }
@@ -374,40 +377,27 @@ header ul a:hover{
     bottom: 35%;
 }
 
-
-
 .my-project{
-    display: flex;
-    flex-direction: column;
-    gap: 10%;
-    align-items: center;
     position: relative;
-    width: 80%;
-    height: 100vh;
-    margin-top: 200px;
-    margin-bottom: 700px;
+    width: 90%;
+    margin: 200px auto;
+    display: flex;
+    flex-direction: row;   /* horizontal */
+    justify-content: center;
+    align-items: flex-end;
+    gap: 50px;
 }
 
-.project-card {
+.project-card{
+    width: 350px;          /* fixed card size */
     display: flex;
-    width: 100%;
-    height: 40%;
-    align-items: center;
-    gap: 10%;
-    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .project-vidbox{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
-    mix-blend-mode:exclusion;
-    position: relative;
-    cursor: pointer;
-    transition: 0.5s;
-    min-width: 400px;
-
+    width: 100%;
+    min-width: unset;
 }
 
 .project-vidbox video{
@@ -423,12 +413,8 @@ header ul a:hover{
 }
 
 .project-info{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    width: 50%;
-    padding-left: 10%;
+    width: 100%;
+    padding-left: 0;
 }
 
 .project-info h1{
@@ -503,9 +489,6 @@ header ul a:hover{
     transform: translateX(80%, 80%) rotate(20deg);
   }
 }
-
-
-
 
 /* Skills section */
 .skills-section{
@@ -708,7 +691,8 @@ header ul a:hover{
 
 .footer{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -717,6 +701,12 @@ header ul a:hover{
     background-color: rgba(255, 255, 255, 0.121);
     z-index: 999;
     padding: 0 3rem;
+    text-align: center;
+}
+
+.footer h1{
+    margin: 0 auto;
+    text-align: center;
 }
 
 
@@ -977,10 +967,6 @@ header ul a:hover{
         margin-top: -15%;
     }
 
-    .autoBlur{
-        animation: none;
-    }
-    
     .hero{
         flex-direction: column;
         top:0;
@@ -1218,13 +1204,530 @@ header ul a:hover{
         gap: 10px;
     }
 
-
 }
 
+.box-icons a i,
+.social-sidebar a i,
+.social-icons a i {
+    color: white;
+}
+
+.robot-3d {
+    position: relative;   /* NOT absolute */
+    display: block;
+    top: -280px;
+    left: 100px;
+    width: 89%;
+    height: 370px;
+    z-index: 1;
+}
+
+.robot-3d canvas{
+    background: transparent !important;
+}
+
+/* ===== Reviews Section ===== */
 
 
+.reviews-section {
+    margin-top: -350px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 200px;
+}
 
+.reviews-wrapper {
+    margin-left: 30px;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
+/* Reviews Section Glow Hover */
+.mini-review {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 16px;
+    width: 320px;
+    color: #fff;
+    transition: 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
 
+.mini-review:hover {
+    transform: translateY(-10px) scale(1.03); /* slightly bigger */
+    box-shadow: 0 0 25px rgba(114,161,222,0.8), 0 0 50px rgba(114,161,222,0.5); /* glow */
+}
 
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
 
+.review-header img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.review-header h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.review-header span {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+/* Projects page responsive fixes */
+.my-project {
+    width: min(1200px, 92%);
+    margin: 160px auto 120px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    gap: 30px;
+    align-items: start;
+}
+
+.my-project .section-title {
+    grid-column: 1 / -1;
+    margin: 0;
+    text-align: center;
+}
+
+.project-card {
+    width: 100%;
+    min-width: 0;
+}
+
+.project-vidbox video {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+}
+
+.project-info {
+    width: 100%;
+    min-width: 0;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.project-info h1 {
+    width: 100%;
+    max-width: none;
+    text-wrap: wrap;
+}
+
+.project-info p {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    margin-bottom: 25px;
+}
+
+.robot-3d {
+    top: -120px;
+    left: 0;
+    width: min(1100px, 100%);
+    margin: 0 auto;
+}
+
+.reviews-section {
+    margin-top: -120px;
+    margin-bottom: 120px;
+    padding: 0 16px;
+}
+
+.reviews-wrapper {
+    margin-left: 0;
+    gap: 20px;
+}
+
+.mini-review {
+    width: min(320px, 100%);
+}
+
+@media screen and (max-width: 1200px) {
+    .my-project {
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+        gap: 24px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .my-project {
+        grid-template-columns: 1fr;
+        width: min(680px, 92%);
+        margin: 120px auto 90px;
+    }
+
+    .project-card {
+        margin: 0;
+    }
+
+    .project-info h1 {
+        font-size: 22px;
+    }
+
+    .project-info p {
+        font-size: 14px;
+    }
+
+    .robot-3d {
+        top: -70px;
+        height: 280px;
+    }
+
+    .reviews-section {
+        margin-top: -70px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .project-card,
+    .project-info,
+    .project-vidbox {
+        margin-left: 0;
+    }
+
+    .project-vidbox video {
+        width: 100%;
+    }
+
+    .project-info h1 {
+        font-size: 20px;
+        text-wrap: wrap;
+    }
+
+    .project-info p {
+        font-size: 13px;
+    }
+
+    .robot-3d {
+        top: -30px;
+        height: 220px;
+    }
+}
+
+/* Global responsive stabilization */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img,
+video {
+    max-width: 100%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+header ul {
+    width: auto;
+    gap: clamp(6px, 1.4vw, 18px);
+    padding: 12px 16px;
+}
+
+header ul a {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.hero-info h1 {
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    line-height: 1.1;
+}
+
+.hero-info p {
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+}
+
+.section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.footer {
+    position: relative;
+    margin-top: 40px;
+    width: 100%;
+}
+
+@media screen and (max-width: 1100px) {
+    .container {
+        gap: 70px;
+    }
+
+    .hero {
+        min-height: 100svh;
+    }
+
+    .skills-video {
+        height: min(72vw, 620px);
+    }
+
+    .info-section,
+    .contact-section {
+        width: min(92%, 980px);
+    }
+
+    .contact-section {
+        height: auto;
+        min-height: 90vh;
+        padding: 80px 0 30px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    header {
+        padding: 0 14px;
+    }
+
+    .left {
+        margin-left: 0;
+    }
+
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 90px;
+        gap: 24px;
+        height: auto;
+    }
+
+    .hero-info {
+        position: static;
+        width: min(92%, 700px);
+        text-align: left;
+    }
+
+    .skills-video-box {
+        position: static;
+        width: min(92%, 560px);
+        margin: 0 auto;
+    }
+
+    .skills-video {
+        width: 100%;
+        height: auto;
+    }
+
+    .scroll-down {
+        display: none;
+    }
+
+    .info-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .card,
+    .card:nth-child(3),
+    .card:nth-child(4) {
+        grid-column: auto;
+        grid-row: auto;
+        height: auto;
+        min-height: 330px;
+    }
+
+    .card h1,
+    .card:nth-child(3) h1,
+    .card:nth-child(4) h1 {
+        position: static;
+        margin: 20px 20px 8px;
+        font-size: 1.35rem;
+    }
+
+    .card p,
+    .card:nth-child(3) p,
+    .card:nth-child(4) p {
+        position: static;
+        margin: 0 20px 20px;
+        max-width: none;
+        font-size: 0.95rem;
+    }
+
+    .card button {
+        position: static;
+        margin: 0 20px 20px;
+    }
+
+    .contact-section {
+        flex-direction: column;
+        gap: 30px;
+        align-items: flex-start;
+    }
+
+    .contact-section h1 {
+        position: static;
+        margin: 0 0 8px;
+    }
+
+    .social-box,
+    .contact-box {
+        width: 100%;
+    }
+
+    .contact-box input {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .my-project {
+        margin-top: 90px;
+    }
+
+    .robot-3d {
+        width: 100%;
+        top: -20px;
+    }
+
+    .reviews-section {
+        margin-top: -30px;
+    }
+
+    .footer {
+        height: auto;
+        padding: 12px;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        gap: 55px;
+    }
+
+    .hero-info,
+    .info-section,
+    .skills-section,
+    .contact-section,
+    .my-project {
+        width: 94%;
+    }
+
+    .hero-info button,
+    .project-info button,
+    .contact-box button {
+        width: 100%;
+    }
+
+    .social-box {
+        margin-left: 0;
+    }
+}
+
+/* Targeted fixes: desktop nav spacing + robot visibility */
+@media screen and (min-width: 1201px) {
+    header ul {
+        min-width: 620px;
+        justify-content: space-between;
+        padding: 12px 28px;
+    }
+}
+
+.robot-3d {
+    position: relative;
+    display: block;
+    top: 0;
+    left: 0;
+    width: min(1100px, 92vw);
+    height: clamp(240px, 38vw, 420px);
+    margin: 10px auto 0;
+    overflow: visible;
+}
+
+@media screen and (max-width: 900px) {
+    .robot-3d {
+        width: min(96vw, 760px);
+        height: clamp(220px, 52vw, 360px);
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .robot-3d {
+        width: 96vw;
+        height: clamp(200px, 62vw, 320px);
+    }
+}
+
+/* Projects page: remove excess gap between cards and robot */
+.container > .my-project {
+    margin-bottom: 10px;
+}
+
+.container > .my-project + .robot-3d {
+    margin-top: -70px;
+}
+
+@media screen and (max-width: 900px) {
+    .container > .my-project + .robot-3d {
+        margin-top: -40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .container > .my-project + .robot-3d {
+        margin-top: -20px;
+    }
+}
+
+/* Client reviews centered */
+.reviews-section {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviews-section h1.section-title {
+    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reviews-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Keep all project cards in one line on large screens */
+.my-project {
+    width: min(1500px, 94%);
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+    gap: 40px;
+}
+
+@media screen and (max-width: 1350px) {
+    .my-project {
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .my-project {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .my-project {
+        grid-template-columns: 1fr;
+    }
+}
