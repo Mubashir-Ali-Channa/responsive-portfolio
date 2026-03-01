@@ -661,6 +661,14 @@ header ul a:hover{
     margin-bottom: 5px;
 } 
 
+.contact-box label{
+    display: block;
+    max-width: 400px;
+    margin-top: 20px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
 .contact-box input{
     padding: 7.5px 30px;
     background-color: lightgray;
@@ -670,6 +678,23 @@ header ul a:hover{
     outline : none;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+.contact-box textarea{
+    padding: 12px 20px;
+    background-color: lightgray;
+    width: 80%;
+    border: none;
+    outline: none;
+    resize: vertical;
+    min-height: 120px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.contact-box input:focus,
+.contact-box textarea:focus{
+    box-shadow: 0 0 0 2px #72a1de81;
 }
 
 .contact-box button{
@@ -1286,6 +1311,16 @@ header ul a:hover{
     opacity: 0.7;
 }
 
+.review-stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #f6d365;
+    font-size: 16px;
+    margin: 2px 0 10px;
+    text-shadow: 0 0 8px rgba(246, 211, 101, 0.35);
+}
+
 /* Projects page responsive fixes */
 .my-project {
     width: min(1200px, 92%);
@@ -1581,6 +1616,11 @@ header ul a {
         width: 100%;
         max-width: 100%;
     }
+
+    .contact-box textarea {
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
 @media screen and (max-width: 700px) {
@@ -1729,5 +1769,19 @@ header ul a {
 @media screen and (max-width: 700px) {
     .my-project {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Project links actions */
+.project-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 480px) {
+    .project-links {
+        flex-direction: column;
+        width: 100%;
     }
 }
